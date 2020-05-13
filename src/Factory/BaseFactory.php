@@ -52,6 +52,10 @@ abstract class BaseFactory
      */
     protected $associated = [];
     /**
+     * @var int
+     */
+    protected $fakerSeed = 1234;
+    /**
      * @var array
      */
     protected $marshallerOptions = [
@@ -175,7 +179,7 @@ abstract class BaseFactory
     {
         if (is_null(self::$faker)) {
             $faker = Factory::create();
-            $faker->seed();
+            $faker->seed($this->getFakerSeed());
             self::$faker = $faker;
         }
 
@@ -376,6 +380,22 @@ abstract class BaseFactory
         }
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFakerSeed(): int
+    {
+        return $this->fakerSeed;
+    }
+
+    /**
+     * @param int $fakerSeed
+     */
+    public function setFakerSeed(int $fakerSeed)
+    {
+        $this->fakerSeed = $fakerSeed;
     }
 
     /**

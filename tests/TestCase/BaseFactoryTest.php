@@ -720,4 +720,21 @@ class BaseFactoryTest extends TestCase
 
         $this->assertEquals(1, TableRegistry::getTableLocator()->get('Addresses')->find()->count());
     }
+
+    /**
+     * This test in uncomplete
+     * Althought the seed is the same for authors 1 and 2, their names are not equal
+     */
+    public function testSetFakerSeed()
+    {
+        $factory = AuthorFactory::make();
+        $author1 = $factory->getEntity();
+        $author2 = $factory->getEntity();
+//        $author3 = $factory->setFakerSeed(4321)->getEntity();
+
+        $this->assertEquals($factory->getFakerSeed(), 1234);
+        $this->assertEquals($author1->name, $author2->name);
+//        $this->assertNotEquals($author1->name, $author3->name);
+
+    }
 }

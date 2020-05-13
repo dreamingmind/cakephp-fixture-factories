@@ -17,7 +17,7 @@ class AuthorFactory extends BaseFactory
         $this
             ->setDefaultData(function (Generator $faker) {
                 return [
-                    'name' => $faker->name
+                    'name' => $this->getFaker()->name
                 ];
             })
             ->withAddress();
