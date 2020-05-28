@@ -6,6 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+
     steps:
       - uses: actions/checkout@v2
 
@@ -24,6 +33,9 @@ jobs:
       - name: Run test suite with Mysql
         run: composer run-tests-mysql
 
+      - name: Run test suite with Postgres
+        run: composer run-tests-postgres
+
       - name: Install highest dependencies
         run: composer update --prefer-dist --no-progress --no-suggest --prefer-stable
 
@@ -32,3 +44,6 @@ jobs:
 
       - name: Run test suite with Mysql
         run: composer run-tests-mysql
+
+      - name: Run test suite with Postgres
+        run: composer run-tests-postgres

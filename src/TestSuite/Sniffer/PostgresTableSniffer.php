@@ -10,27 +10,6 @@ class PostgresTableSniffer extends BaseTableSniffer
 {
     public function getDirtyTables(): array
     {
-//        $sequences = $this->connection->execute("
-//            SELECT sequence_name  FROM information_schema.sequences;
-//        ")->fetchAll();
-//        $sequences = Hash::extract($sequences, '{n}.0');
-//
-//        $stats = $this->connection->newQuery();
-//        $tables = [];
-//        foreach ($sequences as $sequence) {
-//            $stats->select("nextval('$sequence')");
-//            $tables[] = preg_replace("/_id_seq$/", '', $sequence );
-//        }
-//        $stats = $stats->execute()->fetchAll()[0];
-//        $stats = array_combine($tables, $stats);
-//
-//        return array_keys(
-//            array_filter(
-//                $stats,
-//                function($var) { return $var > 1; }
-//            )
-//        );
-
         $tables = $this->connection->execute("
             SELECT relname FROM pg_stat_all_tables
 	            WHERE schemaname = 'public'
