@@ -23,7 +23,7 @@ class CreateBills extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('amount', 'float', [
-                'precision' => 10,
+//                'precision' => 10,
                 'scale' => 2,
                 'null' => false,
             ])

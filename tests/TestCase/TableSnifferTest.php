@@ -37,6 +37,15 @@ class TableSnifferTest extends TestCase
         $this->FixtureManager = new FixtureManager();
     }
 
+    public function tearDown(): void
+    {
+        unset($this->TableSniffer);
+        unset($this->FixtureManager);
+        
+        parent::tearDown();
+    }
+
+
     /**
      * Following the convention, the TableSniffers must be the name of
      * the driver (e.g. Mysql)  + "TableSniffer"
