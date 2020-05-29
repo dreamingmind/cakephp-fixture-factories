@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    php-version: '7.4'
+
     strategy:
       fail-fast: false
       matrix:
@@ -13,13 +13,12 @@ jobs:
         db-type: [sqlite, mysql, pgsql]
 
     services:
-
       postgres:
         image: postgres
         ports:
           - 5432:5432
         env:
-          POSTGRES_PASSWORD: root
+          POSTGRES_PASSWORD: postgres
 
     steps:
       - uses: actions/checkout@v2
