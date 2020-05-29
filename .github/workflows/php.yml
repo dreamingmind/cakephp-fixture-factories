@@ -34,17 +34,17 @@ jobs:
         run: composer update --prefer-dist --no-progress --no-suggest --prefer-lowest --prefer-stable
 
       - if: ${{ matrix.composer-type }} == 'highest'
-          name: Install highest dependencies
-          run: composer update --prefer-dist --no-progress --no-suggest --prefer-stable
+        name: Install highest dependencies
+        run: composer update --prefer-dist --no-progress --no-suggest --prefer-stable
 
       - if: ${{ matrix.db-type }} == 'sqlite'
-          name: Run tests on sqlite
-          run: composer run-tests-sqlite
+        name: Run tests on sqlite
+        run: composer run-tests-sqlite
 
       - if: ${{ matrix.db-type }} == 'mysql'
-          name: Run tests on mysql
-          run: composer run-tests-mysql root root
+        name: Run tests on mysql
+        run: composer run-tests-mysql root root
 
       - if: ${{ matrix.db-type }} == 'postgres'
-          name: Run tests on postgres
-          run: composer run-tests-postgres postgres postgres
+        name: Run tests on postgres
+        run: composer run-tests-postgres postgres postgres
