@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        db-type: [sqlite, mysql, pgsql]
         composer-type: [lowest highest]
+        db-type: [sqlite, mysql, pgsql]
 
     services:
       postgres:
