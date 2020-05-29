@@ -15,7 +15,9 @@ jobs:
         ports:
           - 5432:5432
         env:
+          POSTGRES_DB: test_fixture_factories
           POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
 
     steps:
       - uses: actions/checkout@v2
