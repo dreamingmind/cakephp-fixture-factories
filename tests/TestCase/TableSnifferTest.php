@@ -52,7 +52,7 @@ class TableSnifferTest extends TestCase
      */
     public function testTableSnifferFinder()
     {
-        $driver = explode('\\', DB_DRIVER);
+        $driver = explode('\\', getenv('DB_DRIVER'));
         $driver = array_pop($driver);
         $expectedClass = '\CakephpFixtureFactories\TestSuite\Sniffer\\' . $driver . 'TableSniffer';
         $this->assertInstanceOf($expectedClass, $this->TableSniffer);
